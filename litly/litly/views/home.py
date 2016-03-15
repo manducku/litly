@@ -1,14 +1,19 @@
 from django.views.generic import View,TemplateView,CreateView 
 from resources.models import Resource 
+from django.shortcuts import render 
+class HomeView(View):
+    
+    def get(self, request):
+        context = {
+                'resources': Resource.objects.all()
+                }
 
-class HomeView(TemplateView, CreateView):
-    template_name = "home.html"
-    fields = ['prev_url', ]
+        return render(
+                request, 
+                "home.html",
+                context = context,
+                )
 
-    def get_context_data(self):
-        context_data = super(HomeView, self).get_context_data()
-        context_data['resources']= Resource.objects.all()
-
-        return context_data
+        
 
 
