@@ -11,4 +11,4 @@ test:
 	python litly/manage.py test litly
 
 rs:
-	python litly/manage.py runsever
+	python litly/manage.py runserver
