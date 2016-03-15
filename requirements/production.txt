@@ -1,0 +1,4 @@
+Django
+ipython
+django-debug-toolbar
+django-extensions
