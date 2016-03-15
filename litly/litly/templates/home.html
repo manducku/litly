@@ -7,6 +7,15 @@ litly home
 {% block content %}
 <h1> it`s HOME </h1>
 
+<form action="{% url 'home'%}" method = "POST">
+    {%csrf_token%}
+    <input type="text" name="prev_url"></input>
+    <input type="submit">
+</form>
+
+</form>
+
+
 <ul>
     {%for resource in resources%}
     <li> {{resource.prev_url}} </li>
