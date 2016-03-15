@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from litly.views import HomeView
-
+from resources.views import RedirectionView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view(), name = "home"),
+    url(r'^(?P<next_url>\w+)/$',RedirectionView.as_view(), name= "redirect"), 
 ]
