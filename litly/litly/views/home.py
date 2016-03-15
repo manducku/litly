@@ -16,12 +16,18 @@ class HomeView(View):
                 )
 
     def post(self, request):
-        Resource.objects.create(
-                prev_url = request.POST.get("prev_url")
-                )
-        return redirect(
-                reverse(
-                    "home"
-                    )
+        prev_url = request.POST.get("prev_url")
+        resource = Resource.objects.create(
+                prev_url= prev_url,
                 )
 
+        import hashlib
+        m = hashlib.md5()
+        next_url = m.hexdigest()[:8]
+        resource.next_url = next_url
+        resource.save()
+
+        return redirect(
+                "home"
+                )
+        
